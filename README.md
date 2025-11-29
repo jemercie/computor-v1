@@ -90,3 +90,13 @@ Simplify both sides:
 
 The resulting equality, ` 0 = 3 ` , is false.  
 Thus, the equation has **no solution**.
+
+
+#### Ressources
+
+- [inline assembly rust doc](https://doc.rust-lang.org/reference/inline-assembly.html)
+- [blog post](https://rust-dd.com/post/inline-assembly-in-rust)
+- [second degré](https://www.maths-et-tiques.fr/telech/Secondegre2ESL.pdf)
+- [rust naming](https://rust-lang.github.io/api-guidelines/naming.html)
+- [stack overflow port how to split a string in rust](https://stackoverflow.com/questions/26643688/how-do-i-split-a-string-in-rust)
+- [asm intel 64bits diapo](https://www.lacl.fr/tan/asm)
