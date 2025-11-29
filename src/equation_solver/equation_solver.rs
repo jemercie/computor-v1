@@ -82,7 +82,7 @@ fn compute_discriminant(term: &Term) -> f64 {
 }
 // solve s1 = -b + sqrt(d) / 2*a, s2 = -b - sqrt(d) / 2*a
 fn compute_positive_discriminant_solutions(term: &Term, discriminant: f64) -> (f64, f64) {
-    let sqrt_result = discriminant.sqrt();
+    let sqrt_result = sqrttt(discriminant);
 
     let positive_solution = (-term.b + sqrt_result) / (2.0 * term.a);
     let negative_solution = (-term.b - sqrt_result) / (2.0 * term.a);
@@ -97,7 +97,22 @@ fn compute_zero_discrimiannt_solution(term: &Term) -> f64 {
 // solve s1 = (-b + i*sqrt(d)) / 2a, s2 = (-b - i*sqrt(d)) / 2a
 fn compute_negative_discriminant_solutions(term: &Term, discriminant: f64) -> (f64, f64) {
     let nb = (-term.b) / (2.0 * term.a);
-    let complex = discriminant.abs().sqrt() / (2.0 * term.a);
+    let complex = sqrttt(discriminant.abs()) / (2.0 * term.a);
 
     (nb, complex)
+}
+
+
+fn sqrttt(nb: f64) -> f64 {
+
+    let result: f64;
+
+    unsafe{
+        std::arch::asm!(
+            "sqrtsd {result}, {input}",
+            input = in(xmm_reg) nb,
+            result = out(xmm_reg) result
+        )
+    }
+    result
 }
